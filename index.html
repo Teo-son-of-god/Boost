@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrumentos Musicales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            width: 18rem;
+            margin: 10px;
+            background-color: #333;
+            border: none;
+        }
+        .card-img-top {
+            height: 180px;
+            object-fit: cover;
+        }
+        .card-body {
+            text-align: center;
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #fff;
+        }
+        .navbar {
+            background-color: #222;
+            padding: 1rem;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 1.1rem;
+        }
+        .navbar a:hover {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Instrumentos Musicales</a>
+    </nav>
+
+    <h1>Instrumentos Musicales</h1>
+
+    <div class="container">
+        <!-- Aquí agregas los instrumentos con sus imágenes y botones -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1622324178857-0d889ffee00b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3VpdGFycmElMjBlbGVjdHJpY2ElMjBuZWdyYXxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top" alt="Guitarra">
+            <div class="card-body">
+                <h5 class="card-title">Guitarra</h5>
+                <button class="btn btn-warning" onclick="showInfo('guitarra')">Ver Información</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.malaga8.com/modules/dbblog/views/img/post/165.jpg" class="card-img-top" alt="Batería">
+            <div class="card-body">
+                <h5 class="card-title">Batería</h5>
+                <button class="btn btn-warning" onclick="showInfo('bateria')">Ver Información</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://www.academiasolfeando.com/wp-content/uploads/2023/02/EL-PIANO-1200-%C3%97-628-px.png.webp" class="card-img-top" alt="Piano">
+            <div class="card-body">
+                <h5 class="card-title">Piano</h5>
+                <button class="btn btn-warning" onclick="showInfo('piano')">Ver Información</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://http2.mlstatic.com/D_NQ_NP_946465-MCO78738477185_082024-O.webp" class="card-img-top" alt="Saxofón">
+            <div class="card-body">
+                <h5 class="card-title">Saxofón</h5>
+                <button class="btn btn-warning" onclick="showInfo('saxofon')">Ver Información</button>
+            </div>
+        </div>
+        <!-- Agrega más instrumentos según sea necesario -->
+    </div>
+
+    <!-- Información de los instrumentos -->
+    <div id="instrumento-info" class="container" style="display: none; color: white;">
+        <h2 id="info-title">Información del Instrumento</h2>
+        <p id="info-description"></p>
+        <button class="btn btn-info" onclick="goBack()">Volver al inicio</button>
+    </div>
+    <footer style="background: linear-gradient(135deg, #2e003e, #000000); color: #ffffff;" class="pt-4 pb-2 mt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <h5>Instrumentos musicales</h5>
+              <p>Breve resumen de algunos instrumentos musicales.</p>
+            </div>
+            <div class="col-md-6 mb-3">
+              <h5>Síguenos</h5>
+              <a href="https://www.facebook.com/marketplace/category/instruments/?locale=es_LA" style="color:#d1b3ff;" class="me-2"><i class="bi-facebook"></i></a>
+              <a href="https://x.com/i/flow/login?redirect_after_login=%2Flalira_musica" style="color:#d1b3ff;" class="me-2"><i class=" bi-twitter"></i></a>
+              <a href="https://www.instagram.com/yamahamusical/?hl=es" style="color:#d1b3ff;" class="me-2"><i class="bi-instagram"></i></a>
+            </div>
+          </div>
+          <hr style="border-color: #ffffff;">
+          <div class="text-center">
+            <small>&copy;2025 instrumentos musicales. La musica es vida.</small>
+          </div>
+        </div>
+      </footer>
+      
+      <!-- Bootstrap Icons -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+      
+
+    <script>
+        // Función para mostrar información de cada instrumento
+        function showInfo(instrumento) {
+            let title = "";
+            let description = "";
+
+            switch (instrumento) {
+                case 'guitarra':
+                    title = "Guitarra";
+                    description = "La guitarra es un instrumento musical de cuerda que se toca pulsando o rasgueando sus cuerdas. Es común en muchos géneros musicales.";
+                    break;
+                case 'bateria':
+                    title = "Batería";
+                    description = "La batería es un conjunto de instrumentos de percusión, generalmente compuesto por tambores y platillos, usados en la música popular.";
+                    break;
+                case 'piano':
+                    title = "Piano";
+                    description = "El piano es un instrumento musical de cuerdas percutidas, donde las cuerdas son golpeadas por martillos. Es muy usado en la música clásica y contemporánea.";
+                    break;
+                case 'saxofon':
+                    title = "Saxofón";
+                    description = "El saxofón es un instrumento musical de viento que pertenece a la familia de los metales. Se toca soplando en una caña. Es común en jazz y música clásica.";
+                    break;
+            }
+
+            // Ocultar los instrumentos y mostrar la información
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('instrumento-info').style.display = 'block';
+            document.getElementById('info-title').innerText = title;
+            document.getElementById('info-description').innerText = description;
+        }
+
+        // Función para volver al inicio
+        function goBack() {
+            document.querySelector('.container').style.display = 'flex';
+            document.getElementById('instrumento-info').style.display = 'none';
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
