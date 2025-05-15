@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instrumentos Musicales</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .card {
+      width: 18rem;
+      margin: 10px;
+      background-color: #333;
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .card-img-top {
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid #444;
+    }
+    .card-body {
+      text-align: center;
+      padding: 10px;
+    }
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+    .card-description {
+      font-size: 0.9rem;
+      color: #d1d1d1;
+      margin-bottom: 10px;
+    }
+    .card-button {
+      background-color: #ffcc00;
+      color: black;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+    .card-button:hover {
+      background-color: #ff9900;
+    }
+    .container-instrumentos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #fff;
+    }
+    .navbar {
+      background-color: #222;
+      padding: 1rem;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-size: 1.1rem;
+    }
+    .navbar a:hover {
+      color: #ffcc00;
+    }
+    #mensaje-error {
+      display: none;
+    }
+    .descripcion-instrumento {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      line-height: 1.5;
+      color: #d1d1d1;
+    }
+    .infografia {
+      background: #444;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 10px;
+    }
+    .infografia-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+    .infografia-description {
+      font-size: 1rem;
+      color: #d1d1d1;
+    }
+    .infografia-list {
+      font-size: 1rem;
+      color: #d1d1d1;
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .infografia-list li {
+      margin-bottom: 10px;
+    }
+
+    /* Mejoras visuales en la sección de información del instrumento */
+    .instrumento-info-card {
+      background-color: #333;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      margin-top: 20px;
+    }
+    .instrumento-info-card h4 {
+      color: #ffcc00;
+      font-size: 1.8rem;
+    }
+    .instrumento-info-card p {
+      color: #d1d1d1;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    .instrumento-info-card .info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .instrumento-info-card .info-item i {
+      margin-right: 10px;
+      color: #ffcc00;
+    }
+    .back-button {
+      background-color: #ffcc00;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .back-button:hover {
+      background-color: #ff9900;
+    }
+    .dropdown-toggle::after {
+      display: none;
+    }
+    .dropdown-menu {
+      min-width: 250px;
+      padding: 15px;
+
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">Instrumentos Musicales</a>
+    <!-- Botón con ícono de carrito -->
+  <div class="dropdown">
+    <button class="btn btn btn-outline-dark dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" style="background-color: #ffcc00;">
+      🛒 <span class="ms-2" style="color: #000000;">Compra</span>
+    </button>
+
+    <!-- Menú desplegable -->
+    <div class="dropdown-menu">
+      <label for="instrumento" class="form-label">Nombre del instrumento</label>
+      <input type="text" id="instrumento" class="form-control" placeholder="instrumento">
+      <br>
+      <label for="cantidad" class="form-label">¿Cuantos instrumentos deseas agregar?</label>
+      <input type="number" id="cantidad" class="form-control" placeholder="cantidad">
+    </div>
+
+    <div class="listo">
+        <button class="btn btn btn-outline-dark dropdown-toggle d-flex align-items-center" data-bs-toggle="listo" style="background-color: #ffcc00;">
+         ✅ <span class="ms-3" style="color: #000000;"><a href="index2.html" style="color: #000000;">Finalizar</a></span>
+        </button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </nav>
+
+  <h1>🎵 Catálogo de Instrumentos Musicales</h1>
+
+  <div class="text-center px-5">
+    <p class="mb-4">
+      Este catálogo nació como una simple galería de instrumentos musicales, con el objetivo de enseñar y mostrar los más usados en la música popular.
+      Hoy en día, cuenta con una lista de los 10 instrumentos más representativos, permitiendo explorar su información y buscarlos fácilmente.
+    </p>
+
+    <!-- Barra de búsqueda -->
+    <input type="text" id="busqueda" class="form-control w-50 mx-auto mb-3" placeholder="Buscar un instrumento...">
+    <!-- Mensaje si no se encuentra el instrumento -->
+    <div id="mensaje-error" class="alert alert-danger w-50 mx-auto" role="alert">
+      ❌ Instrumento no encontrado.
+    </div>
+  </div>
+
+  <!-- Lista de instrumentos (con tarjetas) -->
+  <div id="lista-instrumentos" class="container-instrumentos">
+    <!-- Tarjetas generadas dinámicamente por JS -->
+  </div>
+
+  <!-- Sección de información individual -->
+  <div id="instrumento-info" class="container text-center" style="display: none;">
+    <h2 id="info-title">Información del Instrumento</h2>
+    <div id="info-description" class="instrumento-info-card">
+      <!-- Detalles del instrumento se agregarán aquí dinámicamente -->
+    </div>
+    <button class="back-button" onclick="goBack()">Volver al catálogo</button>
+  </div>
+  
+
+  <!-- Footer -->
+  <footer style="background: linear-gradient(135deg, #2e003e, #000000); color: #ffffff;" class="pt-4 pb-2 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <h5>Instrumentos musicales</h5>
+          <p>Breve resumen de algunos instrumentos musicales.</p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h5>Síguenos</h5>
+          <a href="https://www.facebook.com/marketplace/category/instruments/?locale=es_LA" style="color:#d1b3ff;" class="me-2"><i class="bi-facebook"></i></a>
+          <a href="https://x.com/i/flow/login?redirect_after_login=%2Flalira_musica" style="color:#d1b3ff;" class="me-2"><i class="bi-twitter"></i></a>
+          <a href="https://www.instagram.com/yamahamusical/?hl=es" style="color:#d1b3ff;" class="me-2"><i class="bi-instagram"></i></a>
+        </div>
+      </div>
+      <hr style="border-color: #ffffff;">
+      <div class="text-center">
+        <small>&copy;2025 Instrumentos Musicales. La música es vida.</small>
+      </div>
+    </div>
+  </footer>
+  
+
+  <script>
+    const instrumentos = [
+      { id: 'guitarra', nombre: "Guitarra", descripcion: "La guitarra es un instrumento de cuerdas pulsadas, esencial en géneros como el rock, flamenco y pop. Su cuerpo resonante y las cuerdas que se tocan con los dedos o una pua producen una amplia gama de sonidos. Es ideal tanto para acompañamiento como para solistas, y es conocida por su versatilidad. El principal inventor de la guitarra moderna es Antonio de Torres, aunque sus raíces se remontan a varias culturas antiguas.", inventor: "Antonio de Torres", precio: "$3.000.000", img: "https://images.unsplash.com/photo-1622324178857-0d889ffee00b" },
+      { id: 'bateria', nombre: "Batería", descripcion: "La batería es un conjunto de instrumentos de percusión, entre ellos los tambores y platillos. Usada en casi todos los géneros modernos, como el rock, el jazz y el pop, la batería establece la base rítmica de las canciones. Su inventor no puede atribuirse a una sola persona, ya que evolucionó a partir de los tambores de diferentes culturas a lo largo del tiempo.", inventor: "Varios", precio: "$5.000.000", img: "https://www.malaga8.com/modules/dbblog/views/img/post/165.jpg" },
+      { id: 'piano', nombre: "Piano", descripcion: "El piano es un instrumento de cuerdas percutidas que se toca mediante un teclado. Con una rica historia que se remonta al siglo XVIII, el piano es fundamental en la música clásica, el jazz y el pop. Su invención se le atribuye a Bartolomeo Cristofori, aunque su forma moderna ha sido el resultado de siglos de evolución.", inventor: "Bartolomeo Cristofori", precio: "$10.000.000", img: "https://www.academiasolfeando.com/wp-content/uploads/2023/02/EL-PIANO-1200-%C3%97-628-px.png.webp" },
+      { id: 'saxofon', nombre: "Saxofón", descripcion: "El saxofón es un instrumento de viento, generalmente hecho de latón, con una lengüeta en la boquilla. Es especialmente popular en el jazz y en la música clásica moderna. Fue inventado por Adolphe Sax en 1840 y su versatilidad ha hecho que se utilice en muchos géneros musicales.", inventor: "Adolphe Sax", precio: "$7.000.000", img: "https://http2.mlstatic.com/D_NQ_NP_946465-MCO78738477185_082024-O.webp" },
+      { id: 'violin', nombre: "Violín", descripcion: "El violín es un instrumento de cuerda frotada que se toca con un arco. Ha sido parte integral de la música clásica durante siglos y es uno de los instrumentos más complejos debido a la precisión requerida. Inventado por Andrea Amati en el siglo XVI, se ha convertido en la piedra angular de las orquestas clásicas.", inventor: "Andrea Amati", precio: "$6.000.000", img: "https://img.freepik.com/fotos-premium/violin-clasico-madera-arco-sobre-fondo-negro-representacion-3d_476612-5631.jpg" },
+      { id: 'trompeta', nombre: "Trompeta", descripcion: "La trompeta es un instrumento de viento metálico con una boquilla cónica. Es esencial en muchos estilos musicales, desde la música clásica hasta el jazz y el mariachi. Aunque la trompeta tiene raíces que datan de hace miles de años, su forma moderna se popularizó en el siglo XIX.", inventor: "Diversos orígenes", precio: "$9.000.000", img: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dHJvbXBldGF8ZW58MHx8MHx8fDA%3D" },
+      { id: 'flauta', nombre: "Flauta", descripcion: "La flauta es un instrumento de viento hecho generalmente de madera o metal. Se toca soplando por un orificio lateral. Su sonido es suave y melódico, y es popular tanto en la música clásica como en diversos géneros populares. Las primeras flautas datan de hace más de 35.000 años en las culturas prehistóricas.", inventor: "Diversos orígenes", precio: "$11.000.000", img: "https://www.musisol.com/blog/wp-content/uploads/2019/09/flauta-traversa1.jpg" },
+      { id: 'arpa', nombre: "Arpa", descripcion: "El arpa es un instrumento de cuerdas pulsadas, de gran tamaño, que se toca con los dedos. Su sonido es suave y dulce, y es común en la música celta y en la música clásica. Aunque el diseño moderno del arpa fue perfeccionado en el siglo XVIII, existen formas primitivas de este instrumento que datan de miles de años.", inventor: "Diversos orígenes", precio: "$14.000.000", img: "https://png.pngtree.com/background/20230519/original/pngtree-close-up-of-a-harp-on-a-black-background-picture-image_2668455.jpg" }
+    ];
+
+    const contenedor = document.getElementById('lista-instrumentos');
+    const inputBusqueda = document.getElementById('busqueda');
+    const mensajeError = document.getElementById('mensaje-error');
+    const infoSection = document.getElementById('instrumento-info');
+
+    function mostrarInstrumentos(lista) {
+      contenedor.innerHTML = '';
+      lista.forEach(instrumento => {
+        const card = `
+          <div class="card" onclick="showInfo('${instrumento.id}')">
+            <img src="${instrumento.img}" class="card-img-top" alt="${instrumento.nombre}">
+            <div class="card-body">
+              <h5 class="card-title">${instrumento.nombre}</h5>
+              <p class="card-description">${instrumento.descripcion.substring(0, 100)}...</p>
+              <button class="card-button">Ver más</button>
+            </div>
+          </div>
+        `;
+        contenedor.innerHTML += card;
+      });
+    }
+
+    function showInfo(id) {
+      const instrumento = instrumentos.find(inst => inst.id === id);
+      if (instrumento) {
+        document.getElementById('info-title').textContent = instrumento.nombre;
+        document.getElementById('info-description').innerHTML = `
+          <div class="instrumento-info-card">
+            <h4>${instrumento.nombre}</h4>
+            <div class="info-item">
+              <i class="bi-person-circle"></i>
+              <p><strong>Inventor:</strong> ${instrumento.inventor}</p>
+            </div>
+            <div class="info-item">
+              <i class="bi-cash"></i>
+              <p><strong>Precio Aproximado:</strong> ${instrumento.precio}</p>
+            </div>
+            <div class="info-item">
+              <i class="bi-pen"></i>
+              <p><strong>Descripción:</strong> ${instrumento.descripcion}</p>
+            </div>
+          </div>
+        `;
+        infoSection.style.display = 'block';
+        contenedor.style.display = 'none';
+      }
+    }
+
+    function goBack() {
+      infoSection.style.display = 'none';
+      contenedor.style.display = 'flex';
+    }
+
+    inputBusqueda.addEventListener('input', () => {
+      const searchText = inputBusqueda.value.toLowerCase();
+      const resultados = instrumentos.filter(inst => inst.nombre.toLowerCase().includes(searchText));
+      if (resultados.length > 0) {
+        mensajeError.style.display = 'none';
+        mostrarInstrumentos(resultados);
+      } else {
+        mensajeError.style.display = 'block';
+      }
+    });
+
+    // Mostrar todos los instrumentos inicialmente
+    mostrarInstrumentos(instrumentos);
+  </script>
+
+</body>
+</html>

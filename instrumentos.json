@@ -1,0 +1,10 @@
+[
+    {"nombre": "Guitarra", "precio":2.000000},
+    {"nombre": "Batería", "precio":5.000000},
+    {"nombre": "Piano", "precio":10.000000},
+    {"nombre": "Saxofón", "precio":7.000000},
+    {"nombre": "Violín", "precio":6.000000 },
+    {"nombre": "Trompeta", "precio":9.000000},
+    {"nombre": "Flauta", "precio":11.000000},
+    {"nombre": "Arpa", "precio":14.000000}
+]
